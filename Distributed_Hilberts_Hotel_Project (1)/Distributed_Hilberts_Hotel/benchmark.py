@@ -1,4 +1,3 @@
-"""Reproducible benchmark suite for assignment experiments A, B, and C."""
 from __future__ import annotations
 import argparse
 import csv
@@ -26,8 +25,7 @@ def make_guests(k: int, channels: int = 10) -> list[Guest]:
 def seed_system(n: int, v: int, k: int, salt: str) -> HotelSystem:
     system = HotelSystem(n, v, salt=salt)
     for guest in make_guests(k):
-        # Add one by one for measuring assignment only in separate timing functions;
-        # direct internal seeding avoids measuring setup overhead for other operations.
+        
         key = (guest.channel_id, guest.sequence_id)
         node = system.ring.locate(guest)
         system.guests[key] = guest
@@ -63,7 +61,6 @@ def run_benchmarks(output_dir="output", quick=False):
     migration_rows = []
     search_rows = []
 
-    # A: size K; use median across three salts/runs.
     k_values = [1000, 10000] if quick else [1000, 10000, 100000]
     for k in k_values:
         for salt in salts:
@@ -96,7 +93,6 @@ def run_benchmarks(output_dir="output", quick=False):
                 "assigned_count": len(placements)
             })
 
-            # Separate memory run from timing run as required by specification.
             def build_for_memory():
                 mem_sys = seed_system(10, 32, k, salt)
                 return mem_sys
@@ -106,12 +102,11 @@ def run_benchmarks(output_dir="output", quick=False):
                 "current_MiB": current, "peak_MiB": peak
             })
 
-    # B: compare migration rate on same guest set and same salt per round.
     for n in [5, 10, 20]:
         k = 10000 if not quick else 1000
         for salt in salts:
             guests = make_guests(k)
-            # Consistent hashing: add one node, then remove one node from fresh baseline.
+
             ch = HotelSystem(n, 32, salt=salt)
             for g in guests:
                 key = (g.channel_id, g.sequence_id)
@@ -131,7 +126,6 @@ def run_benchmarks(output_dir="output", quick=False):
                 "expected_rate": 1/(n+1), "seconds": ch_add_time
             })
 
-            # Mod N add uses the same insertion-ordered IDs and stable hash family.
             mod = ModNRouter(salt)
             for i in range(1, n + 1):
                 mod.add_node(f"B{i:03d}")
@@ -148,7 +142,6 @@ def run_benchmarks(output_dir="output", quick=False):
                 "expected_rate": n/(n+1), "seconds": mod_add_time
             })
 
-            # Remove the last baseline node from fresh systems to make comparison fair.
             ch2 = HotelSystem(n, 32, salt=salt)
             for g in guests:
                 key = (g.channel_id, g.sequence_id)
@@ -182,7 +175,6 @@ def run_benchmarks(output_dir="output", quick=False):
                 "expected_rate": 1/n, "seconds": mod_remove_time
             })
 
-    # C: V effect on load balance and tracked memory.
     for v in [1, 8, 32]:
         k = 10000 if not quick else 1000
         for salt in salts:
