@@ -27,7 +27,6 @@ def plot_results(input_dir="output", output_dir="output"):
     migrations = read_csv(migration_path)
     memory = read_csv(memory_path)
 
-    # Graph A: assignment time versus K, median across salts.
     groups = {}
     for row in timing:
         if row["experiment"] == "A_size":
@@ -42,8 +41,7 @@ def plot_results(input_dir="output", output_dir="output"):
     plt.tight_layout()
     plt.savefig(os.path.join(output_dir, "graph_A_time_vs_K.png"), dpi=160)
     plt.close()
-
-    # Graph B: migration rate versus N for both methods and operations.
+.
     plt.figure()
     styles = [
         ("consistent_hashing", "add", "Consistent hashing - add"),
@@ -67,7 +65,6 @@ def plot_results(input_dir="output", output_dir="output"):
     plt.savefig(os.path.join(output_dir, "graph_B_migration_vs_N.png"), dpi=160)
     plt.close()
 
-    # Graph C: V effects on CV and memory.
     c_rows = [r for r in timing if r["experiment"] == "C_virtual_nodes"]
     mem_rows = [r for r in memory if r["experiment"] == "C_virtual_nodes"]
     cv_by_v, mem_by_v = {}, {}

@@ -24,9 +24,7 @@ def show_migrations(migrations: list[Migration]) -> None:
                   f"{m.new_node_id} | room {m.room_no}")
         if len(migrations) > 50:
             print(f"... แสดง 50 รายการแรก จากทั้งหมด {len(migrations)} รายการ")
-    # Migration rate denominator is the guest count before node change.
-    # This function is called immediately after the operation; caller prints rate separately.
-
+    
 
 def main():
     print("=== Distributed Hilbert's Hotel: Consistent Hashing ===")

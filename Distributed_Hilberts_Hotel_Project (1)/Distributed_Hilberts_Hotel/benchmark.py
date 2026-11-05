@@ -13,7 +13,6 @@ def median(values):
 
 
 def make_guests(k: int, channels: int = 10) -> list[Guest]:
-    # Near-even distribution over channels, deterministic IDs starting at sequence 1.
     base, extra = divmod(k, channels)
     guests = []
     for c in range(1, channels + 1):
