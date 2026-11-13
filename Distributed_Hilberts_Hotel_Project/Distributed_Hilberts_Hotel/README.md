@@ -14,9 +14,8 @@
 
 ## Requirements
 - Python 3.10 หรือใหม่กว่า
-- กราฟต้องติดตั้ง `matplotlib` เพิ่ม:
-  `python -m pip install matplotlib`
-- Core system ใช้ standard library เท่านั้น
+- ใช้ Python Standard Library เท่านั้น ไม่ต้องติดตั้ง External Package เพิ่ม
+- กราฟสร้างเป็นไฟล์ SVG ด้วยโค้ด Python ที่เขียนไว้ในโปรเจกต์เอง
 
 ## เริ่มใช้งาน
 ```bash
@@ -55,7 +54,6 @@ python benchmark.py
 
 สร้างกราฟ:
 ```bash
-python -m pip install matplotlib
 python plot_results.py
 ```
 
@@ -63,9 +61,9 @@ python plot_results.py
 - `experiment_timing.csv`
 - `experiment_memory.csv`
 - `experiment_migrations.csv`
-- `graph_A_time_vs_K.png`
-- `graph_B_migration_vs_N.png`
-- `graph_C_V_CV_memory.png`
+- `graph_A_time_vs_K.svg`
+- `graph_B_migration_vs_N.svg`
+- `graph_C_V_CV_memory.svg`
 
 ## โครงสร้างคลาส
 - `Guest`: รหัสช่องทาง/ลำดับและคำนวณ room number

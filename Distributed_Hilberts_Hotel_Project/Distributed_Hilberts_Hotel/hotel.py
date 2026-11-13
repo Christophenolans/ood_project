@@ -95,6 +95,7 @@ class HashRing:
         idx = bisect_left(self._positions, position)
         if idx == len(self._points):
             idx = 0
+        # Duplicate positions are retained and sorted by (position,node_id,replica).
         return self._points[idx][1]
 
     @property
@@ -138,7 +139,8 @@ class ModNRouter:
 
 
 class HotelSystem:
-    
+    """OOP application layer; routing, guests, and reverse room index stay consistent."""
+
     def __init__(self, node_count: int = 3, virtual_nodes: int = 32,
                  salt: str = "0", node_prefix: str = "B"):
         if not isinstance(node_count, int) or node_count < 1:
@@ -223,6 +225,7 @@ class HotelSystem:
         if any(key in self.guests for key in keys):
             raise ValueError("ช่วงรหัสแขกซ้ำกับข้อมูลเดิม ปฏิเสธทั้งกลุ่ม")
         new_guests = [Guest(c, s) for c, s in keys]
+        # Precompute before mutating to keep the operation atomic if routing fails.
         placements = [(key, guest, self.ring.locate(guest))
                       for key, guest in zip(keys, new_guests)]
         for key, guest, node_id in placements:

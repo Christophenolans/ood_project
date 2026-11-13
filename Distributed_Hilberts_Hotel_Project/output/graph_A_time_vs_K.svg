@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620">
+<rect width="100%" height="100%" fill="white"/>
+<text x="500.0" y="38" text-anchor="middle" font-size="23" font-family="Arial">A. Assignment time vs K (N=10, V=32)</text>
+<line x1="95" y1="85.0" x2="965" y2="85.0" stroke="#dddddd"/>
+<text x="83" y="90.0" text-anchor="end" font-size="12" font-family="Arial">0.316</text>
+<line x1="95" y1="173.0" x2="965" y2="173.0" stroke="#dddddd"/>
+<text x="83" y="178.0" text-anchor="end" font-size="12" font-family="Arial">0.249</text>
+<line x1="95" y1="261.0" x2="965" y2="261.0" stroke="#dddddd"/>
+<text x="83" y="266.0" text-anchor="end" font-size="12" font-family="Arial">0.181</text>
+<line x1="95" y1="349.0" x2="965" y2="349.0" stroke="#dddddd"/>
+<text x="83" y="354.0" text-anchor="end" font-size="12" font-family="Arial">0.113</text>
+<line x1="95" y1="437.0" x2="965" y2="437.0" stroke="#dddddd"/>
+<text x="83" y="442.0" text-anchor="end" font-size="12" font-family="Arial">0.0445</text>
+<line x1="95" y1="525.0" x2="965" y2="525.0" stroke="#dddddd"/>
+<text x="83" y="530.0" text-anchor="end" font-size="12" font-family="Arial">-0.0234</text>
+<line x1="95" y1="85" x2="95" y2="525" stroke="black"/>
+<line x1="95" y1="525" x2="965" y2="525" stroke="black"/>
+<line x1="95.0" y1="525" x2="95.0" y2="530" stroke="black"/>
+<text x="95.0" y="549" text-anchor="middle" font-size="12" font-family="Arial">1000</text>
+<line x1="174.1" y1="525" x2="174.1" y2="530" stroke="black"/>
+<text x="174.1" y="549" text-anchor="middle" font-size="12" font-family="Arial">10000</text>
+<line x1="965.0" y1="525" x2="965.0" y2="530" stroke="black"/>
+<text x="965.0" y="549" text-anchor="middle" font-size="12" font-family="Arial">100000</text>
+<polyline points="95.0,491.2 174.1,454.5 965.0,115.3" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+<circle cx="95.0" cy="491.2" r="4" fill="#2563eb"/>
+<circle cx="174.1" cy="454.5" r="4" fill="#2563eb"/>
+<circle cx="965.0" cy="115.3" r="4" fill="#2563eb"/>
+<line x1="95.0" y1="583" x2="120.0" y2="583" stroke="#2563eb" stroke-width="3"/>
+<text x="127.0" y="587" font-size="12" font-family="Arial">Median assignment time</text>
+<text x="530.0" y="608" text-anchor="middle" font-size="15" font-family="Arial">Number of guests K</text>
+<text x="22" y="305.0" text-anchor="middle" transform="rotate(-90 22 305.0)" font-size="15" font-family="Arial">Assignment time (seconds)</text>
+</svg>
