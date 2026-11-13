@@ -1,0 +1,50 @@
+{
+  "created": "2026-11-13T21:47:27",
+  "python": "3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "machine": "AMD64",
+  "processor": "Intel64 Family 6 Model 140 Stepping 1, GenuineIntel",
+  "perf_counter": "namespace(implementation='QueryPerformanceCounter()', monotonic=True, adjustable=False, resolution=1e-07)",
+  "args": {
+    "outdir": "output/experiments",
+    "only": [
+      "A",
+      "B",
+      "C"
+    ],
+    "salts": [
+      "0",
+      "1",
+      "2"
+    ],
+    "ks": [
+      1000,
+      10000,
+      100000
+    ],
+    "ns": [
+      5,
+      10,
+      20
+    ],
+    "vs": [
+      1,
+      8,
+      32
+    ],
+    "n_fixed": 10,
+    "v_fixed": 32,
+    "k_fixed": 10000,
+    "remove_target": "B001",
+    "quick": false,
+    "no_plots": true,
+    "english_labels": false
+  },
+  "channels": 10,
+  "search_batch": 1000,
+  "search_seed": 20260101,
+  "notes": [
+    "memory = Python-tracked memory via tracemalloc (not whole process), measured in a separate pass from timing",
+    "time/memory reported as median of rounds; plots show mean with min-max"
+  ]
+}
